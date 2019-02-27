@@ -28,7 +28,7 @@ public class BikeController {
         return bikeService.getBikes();
     }
 
-    @GetMapping("/bikes/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
     Bike getBike(@PathVariable String id) {
@@ -45,7 +45,7 @@ public class BikeController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void removeBike(String id) {
+    public void removeBike(@PathVariable String id) {
         LOG.info("Controller: Removing specific bike.");
         int index = Integer.parseInt(id);
         bikeService.deleteBike(index);
