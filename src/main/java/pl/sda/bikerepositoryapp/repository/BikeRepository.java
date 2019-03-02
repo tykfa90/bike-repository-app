@@ -7,6 +7,7 @@ import pl.sda.bikerepositoryapp.model.BikeType;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public class BikeRepository {
@@ -56,15 +57,15 @@ public class BikeRepository {
         return bikes.values();
     }
 
-    public Bike findBike(int index) {
-        return bikes.get(index);
+    public Optional<Bike> findBike(int index) {
+        return Optional.ofNullable(bikes.get(index));
     }
 
     public void storeBike(Bike bike) {
         bikes.put(bikes.keySet().size() + 1, bike);
     }
 
-    public void deleteBike(int index) {
-        bikes.remove(index);
+    public Bike deleteBike(int index) {
+        return bikes.remove(index);
     }
 }
